@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', path='/index.css') }}">
+    <title>Welcome to FastAPI App</title>
+</head>
+<body>
+   <main>
+        <h1>Welcome to "FastAPI Hello Application"</h1>
+        <a href="/sync">
+            <button class="button">Form Sync</button>
+        </a>
+        <a href="/async">
+            <button class="button">Form Async</button>
+        </a>
+    </main>
+</body>
+</html>
