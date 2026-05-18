@@ -47,6 +47,18 @@ services:
       - postgres
       - redis
 
+  celery-worker:
+    build:
+      context: ..
+      dockerfile: build/Dockerfile
+    container_name: celery-worker
+    command: celery -A celery_app.tasks worker --loglevel=INFO --pool=solo
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis
+
 volumes:
   postgres_data:
   redis_data:
