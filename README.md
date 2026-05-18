@@ -67,3 +67,27 @@ zmiennych środowiskowych zdefiniowanych w pliku `.env`.
 FastAPI jest frameworkiem natywnie opartym o ASGI, dlatego aplikacja może zostać bezpośrednio uruchomiona przy użyciu 
 serwera Uvicorn bez konieczności dodatkowego opakowywania aplikacji. Wdrożenie aplikacji zostało przygotowane 
 z wykorzystaniem serwera NGINX pełniącego rolę reverse proxy przekazującego żądania HTTP do aplikacji backendowej. 
+
+## Zadanie 3
+
+Aplikacja została wdrożona na maszynie wirtualnej Oracle Cloud Infrastructure z systemem Ubuntu Server. 
+Do uruchomienia usług wykorzystano Docker oraz Docker Compose, co umożliwiło uruchomienie wszystkich komponentów w 
+oddzielnych kontenerach.
+
+Architektura aplikacji opiera się na konfiguracji:
+Application + ASGI (Uvicorn) + NGINX
+Zarówno aplikacja Flask, jak i FastAPI działają z wykorzystaniem serwera ASGI Uvicorn. 
+NGINX został skonfigurowany jako reverse proxy obsługujące ruch HTTP i przekazujące żądania do 
+odpowiednich aplikacji backendowych.
+Aplikacje są dostępne pod adresami:
+
+Flask:
+http://89.168.106.107/
+FastAPI:
+http://89.168.106.107:81/
+Formularze synchroniczne oraz asynchroniczne są dostępne z poziomu interfejsu webowego aplikacji. Dane przesyłane 
+przez formularze są zapisywane w bazie PostgreSQL, natomiast obsługa zadań asynchronicznych realizowana jest przy 
+użyciu Celery oraz Redis.
+
+Do testowania wydajności aplikacji wykorzystano narzędzie k6, wykonując testy obciążeniowe dla wielu jednoczesnych 
+użytkowników.
