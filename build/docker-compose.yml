@@ -3,6 +3,8 @@ services:
     image: postgres:16-alpine
     container_name: recruiter-task-postgres
     restart: always
+    env_file:
+      - .env
     environment:
       POSTGRES_USER: ${PGROLE}
       POSTGRES_PASSWORD: ${PGPASSWORD}
@@ -22,7 +24,9 @@ services:
       - redis_data:/data
 
   flask-app:
-    build: .
+    build:
+      context: ..
+      dockerfile: build/Dockerfile
     container_name: flask-app
     command: uvicorn hello_app_flask.asgi:asgi_app --host 0.0.0.0 --port 5000
     ports:
@@ -32,7 +36,9 @@ services:
       - redis
 
   fastapi-app:
-    build: .
+    build:
+        context: ..
+        dockerfile: build/Dockerfile
     container_name: fastapi-app
     command: uvicorn hello_app_fastapi.main:app --host 0.0.0.0 --port 8000
     ports:
