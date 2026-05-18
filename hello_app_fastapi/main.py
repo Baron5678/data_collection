@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 
 from hello_app_fastapi.routers import user_data
 
-app = FastAPI(root_path="/fastapi")
+app = FastAPI()
 app.mount("/static", StaticFiles(directory=str(BASE_DIR / "static")), name="static")
 
 #Rendering home page
