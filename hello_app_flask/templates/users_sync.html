@@ -13,7 +13,7 @@
         {% else %}
         <h1>Hello, Anonymous!</h1>
         {% endif %}
-        <form action="/flask/users_sync" method="post">
+        <form action="/users_sync" method="post">
             <div class="form-layout">
                 <div class="field">
                     <label for="name">Name:</label>
@@ -29,7 +29,7 @@
         {% if error %}
             <p style="color: red;">{{ error }}</p>
         {% endif %}
-        <a href="/flask/">
+        <a href="/">
             <button class="button">Home</button>
         </a>
     </main>

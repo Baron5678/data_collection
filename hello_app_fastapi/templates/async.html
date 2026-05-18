@@ -20,7 +20,7 @@
         {% else %}
             <h1>Hello, Anonymous!</h1>
         {% endif %}
-            <form action="/fastapi/async" method="post">
+            <form action="/async" method="post">
                 <div class="form-layout">
                     <div class="field">
                         <label for="username">Username:</label>
@@ -36,7 +36,7 @@
             {% if error %}
                 <p style="color: red;">{{ error }}</p>
             {% endif %}
-        <a href="/fastapi">
+        <a href="/">
             <button class="button">Home</button>
         </a>
         </div>
