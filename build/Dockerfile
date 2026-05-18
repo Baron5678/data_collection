@@ -3,7 +3,7 @@ LABEL authors="igork"
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY build/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
