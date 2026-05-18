@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='user_data_layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <title>Hello Flask Application</title>
+</head>
+<body>
+    <main>
+        {% if status == "SUCCESS" %}
+            <h1>Hello, {{ username }} </h1>
+            <h1>Your phone: {{ phone }}</h1>
+        {% elif status == "FAILURE" %}
+            <p>Data collecting is failed...</p>
+        {% elif status == "PENDING" %}
+            <p>Data is collecting...</p>
+        {% elif status == "RETRY" %}
+            <p>Data collecting is retrying...</p>
+        {% else %}
+            <h1>Hello, Anonymous!</h1>
+        {% endif %}
+            <form action="/users_async" method="post">
+                <div class="form-layout">
+                    <div class="field">
+                        <label style="grid-column: 1; grid-row: 1" for="username">Username:</label>
+                        <input style="grid-column: 2; grid-row: 1" type="text" id="username" name="username" required>
+                    </div>
+                    <div class="field">
+                        <label style="grid-column: 1; grid-row: 2" for="phone">Phone number:</label>
+                        <input style="grid-column: 2; grid-row: 2" type="tel" id="phone" name="phone" required>
+                    </div>
+                    <button class="button" type="submit">Send</button>
+                </div>
+            </form>
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+        <a href="/">
+            <button class="button">Home</button>
+        </a>
+        </div>
+    </main>
+</body>
+</html>

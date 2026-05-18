@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <title>Welcome to Flask App</title>
+</head>
+<body>
+    <main>
+        <h1>Welcome to "Flask Hello Application"</h1>
+        <a href="/users_sync">
+            <button class="button">Form Sync</button>
+        </a>
+        <a href="/users_async">
+            <button class="button">Form Async</button>
+        </a>
+    </main>
+</body>
+</html>
