@@ -1,0 +1,25 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: recruiter-task-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${PGROLE}
+      POSTGRES_PASSWORD: ${PGPASSWORD}
+      POSTGRES_DB: ${PGDATABASE}
+    ports:
+      - "15432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  redis:
+    image: redis:7.4-alpine
+    container_name: recruiter-task-redis
+    restart: always
+    ports:
+      - "16379:6379"
+    volumes :
+      - redis_data:/data
+volumes:
+  postgres_data:
+  redis_data:
+    driver: local
